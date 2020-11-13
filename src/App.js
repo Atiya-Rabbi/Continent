@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import Continent from './continents';
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider } from 'react-apollo';
 import './App.css';
 
+const client = new ApolloClient({
+	uri: "https://countries.trevorblades.com/"
+});
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ApolloProvider client={client}>
+    <div className="container">
+    	<nav className="navbar navbar-expand-lg navbar-light bg-light">
+    		<a className="navbar-brand" href="#">List of Continents</a>
+    	</nav>
+    	<div>
+    		<Continent/>
+    	</div>
     </div>
+    </ApolloProvider>
   );
 }
 
